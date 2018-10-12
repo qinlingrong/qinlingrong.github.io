@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="##android屏幕解锁新解 最近因为一些事接触到android屏幕解锁这块，刚开始查询网上资料，绝大部分以keyguardLock 来进行获取屏幕锁和接触屏幕锁，其思路如下： 1234567 KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE); KeyguardLock ke">
+<meta name="description" content="##Android混淆小结 网上混淆注意事项的文章一抓一大把。这里只记录下为了如何对抗gp商店在上架马甲包时可能会通过代码相似度判断关联关系的问题。 由于打包开启的混淆规则是默认的。所以实际上混淆部分在混淆后代码是完全一致的。这一点可以反编译不同马甲包的apk后自行验证。所以在上架过程中很容易被检测出来。 为了在混淆时能按自己的规则进行混淆。我们可以利用proguard的一些特性完成这一点： ##">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://qlrishui.github.io/2017/04/04/android屏幕解锁新解/index.html">
+<meta property="og:url" content="https://qlrishui.github.io/2018/10/12/Android混淆小结/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="##android屏幕解锁新解 最近因为一些事接触到android屏幕解锁这块，刚开始查询网上资料，绝大部分以keyguardLock 来进行获取屏幕锁和接触屏幕锁，其思路如下： 1234567 KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE); KeyguardLock ke">
-<meta property="og:updated_time" content="2017-04-04T13:50:00.000Z">
+<meta property="og:description" content="##Android混淆小结 网上混淆注意事项的文章一抓一大把。这里只记录下为了如何对抗gp商店在上架马甲包时可能会通过代码相似度判断关联关系的问题。 由于打包开启的混淆规则是默认的。所以实际上混淆部分在混淆后代码是完全一致的。这一点可以反编译不同马甲包的apk后自行验证。所以在上架过程中很容易被检测出来。 为了在混淆时能按自己的规则进行混淆。我们可以利用proguard的一些特性完成这一点： ##">
+<meta property="og:updated_time" content="2018-10-12T07:33:29.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="##android屏幕解锁新解 最近因为一些事接触到android屏幕解锁这块，刚开始查询网上资料，绝大部分以keyguardLock 来进行获取屏幕锁和接触屏幕锁，其思路如下： 1234567 KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE); KeyguardLock ke">
+<meta name="twitter:description" content="##Android混淆小结 网上混淆注意事项的文章一抓一大把。这里只记录下为了如何对抗gp商店在上架马甲包时可能会通过代码相似度判断关联关系的问题。 由于打包开启的混淆规则是默认的。所以实际上混淆部分在混淆后代码是完全一致的。这一点可以反编译不同马甲包的apk后自行验证。所以在上架过程中很容易被检测出来。 为了在混淆时能按自己的规则进行混淆。我们可以利用proguard的一些特性完成这一点： ##">
 
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="https://qlrishui.github.io/2017/04/04/android屏幕解锁新解/"/>
+  <link rel="canonical" href="https://qlrishui.github.io/2018/10/12/Android混淆小结/"/>
 
 
 
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qlrishui.github.io/qinlingrong.github.io/2017/04/04/android屏幕解锁新解/">
+    <link itemprop="mainEntityOfPage" href="https://qlrishui.github.io/qinlingrong.github.io/2018/10/12/Android混淆小结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Qinlingrong">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-04T21:50:00+08:00">
-                2017-04-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T15:29:55+08:00">
+                2018-10-12
               </time>
             
 
@@ -298,31 +298,16 @@
       
 
       
-        <p>##android屏幕解锁新解</p>
-<p>最近因为一些事接触到android屏幕解锁这块，刚开始查询网上资料，绝大部分以keyguardLock 来进行获取屏幕锁和接触屏幕锁，其思路如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE); </span><br><span class="line">KeyguardLock keyguardLock = keyguardManager.newKeyguardLock(&quot;glapp&quot;);</span><br><span class="line"> keyguardLock.disableKeyguard();</span><br><span class="line">获取当前屏幕锁并解锁；</span><br><span class="line"></span><br><span class="line">KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE); </span><br><span class="line"> KeyguardLock keyguardLock = keyguardManager.newKeyguardLock(&quot;glapp&quot;); keyguardLock.reenableKeyguard();</span><br></pre></td></tr></table></figure>
-<p>然后在相应位置 释放持有的屏幕锁</p>
-<p>但是这个思路有一个问题，在最后一次退出应用的时候由于释放的屏幕锁被系统回收，系统会再次锁屏，造成不好的用户体验，</p>
-<p>经过翻阅api，发现有一个更好的解决方式：</p>
-<p>在window对象中，存在这样一个flags ：WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD</p>
-<p>位于 package android.view.WindowManager中。</p>
-<p>其注释如下：</p>
-<pre><code>/** Window flag: when set the window will cause the keyguard to
- * be dismissed, only if it is not a secure lock keyguard.  Because such
- * a keyguard is not needed for security, it will never re-appear if
- * the user navigates to another window (in contrast to
- * {@link #FLAG_SHOW_WHEN_LOCKED}, which will only temporarily
- * hide both secure and non-secure keyguards but ensure they reappear
- * when the user moves to another UI that doesn&apos;t hide them).
- * If the keyguard is currently active and is secure (requires an
- * unlock pattern) than the user will still need to confirm it before
- * seeing this window, unless {@link #FLAG_SHOW_WHEN_LOCKED} has
- * also been set.
- */
-public static final int FLAG_DISMISS_KEYGUARD = 0x00400000;
-</code></pre><p>其大意为：</p>
-<p>窗口的标志： 当键盘锁不是安全的的时候（即基本的屏幕锁）设置该flags后该窗口显示会导致键盘锁被解锁。因为这种键盘锁不需要用于安全，如果用户导航到另一个窗口,它(键盘锁)将永远不会重新出现（相对于{@link #FLAG_SHOW_WHEN_LOCKED}，这只是暂时隐藏安全和非安全的 keyguards，但r如果系统确保当用户移到另一个用户界面（即不在这个应用中），并不设置他们显示方式的时候，它们（键盘锁）又会出现（即键盘锁又恢复到了原来的正常状态而不是被获取释放等等））。如果键盘锁当前处于活动状态，并且是安全的 （比如手势屏幕解锁图案） 用户在看到自己的界面前仍然将需要进行解锁，除非用户还设置了 {@link #FLAG_SHOW_WHEN_LOCKED}。</p>
-<p>So 用法如下 在你的oncreate()方法中，在你setContentView之前<br>你只需要为 window 添加相应flags：<br>getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);<br>setContentView(R.layout.lockscreen);<br>即可大功告成！</p>
+        <p>##Android混淆小结</p>
+<p>网上混淆注意事项的文章一抓一大把。这里只记录下为了如何对抗gp商店在上架马甲包时可能会通过代码相似度判断关联关系的问题。</p>
+<p>由于打包开启的混淆规则是默认的。所以实际上混淆部分在混淆后代码是完全一致的。这一点可以反编译不同马甲包的apk后自行验证。所以在上架过程中很容易被检测出来。</p>
+<p>为了在混淆时能按自己的规则进行混淆。我们可以利用proguard的一些特性完成这一点：</p>
+<p>#####方法名等混淆指定配置<br>-obfuscationdictionary ../app/proguard-rules/keywords.txt</p>
+<p>#####类名混淆指定配置<br>-classobfuscationdictionary ../app/proguard-rules/keywords.txt</p>
+<p>#####包名混淆指定配置<br>-packageobfuscationdictionary ../app/proguard-rules/keywords.txt</p>
+<p>keywords.txt内容则是我们希望混淆时的命名组合。</p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">donot</span><br><span class="line">tony</span><br><span class="line">foce</span><br><span class="line">noti</span><br><span class="line">timo</span><br><span class="line">timey</span><br><span class="line">rowst</span><br><span class="line">zaijian</span><br><span class="line">qinl</span><br><span class="line">onre</span><br><span class="line">jimy</span><br><span class="line">sony</span><br><span class="line">sansmg</span><br><span class="line">huawei</span><br><span class="line">xiaomi</span><br><span class="line">apple</span><br><span class="line">oppo</span><br><span class="line">vivo</span><br><span class="line">chuizi</span><br><span class="line">meizu</span><br><span class="line">htc</span><br><span class="line">lg</span><br><span class="line">nokia</span><br><span class="line">nec</span><br><span class="line">samsung</span><br><span class="line">motorola</span><br><span class="line">sonyericsson</span><br><span class="line">alcatel</span><br><span class="line">philips</span><br><span class="line">zte</span><br><span class="line">honor</span><br><span class="line">gionee</span><br></pre></td></tr></table></figure></p>
+<p>不同的马甲包使用不同的keyword，这样不同马甲包在混淆命名的时候就会使用这些我们声明的字符串进行混淆</p>
 
       
     </div>
@@ -347,7 +332,7 @@ public static final int FLAG_DISMISS_KEYGUARD = 0x00400000;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/qinlingrong.github.io/2017/03/17/初探Fragment/" rel="next" title="">
+              <a href="/qinlingrong.github.io/2018/02/27/探究fragment转场动画的执行流程/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -356,10 +341,6 @@ public static final int FLAG_DISMISS_KEYGUARD = 0x00400000;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/qinlingrong.github.io/2017/04/06/hook Instrumentation 实现对Activity生命周期的监听/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
